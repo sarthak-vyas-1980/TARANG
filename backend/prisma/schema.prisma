@@ -1,0 +1,81 @@
+// schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String?
+  email     String    @unique
+  password  String
+  role      Role      @default(CITIZEN)
+  reports   Report[]
+  createdAt DateTime  @default(now())
+}
+
+model Report {
+  id            Int       @id @default(autoincrement())
+  type          HazardType
+  description   String
+  severity      Severity   @default(LOW)
+  status        Status     @default(PENDING)
+  timestamp     DateTime   @default(now())
+  reporter      User       @relation(fields: [reporterId], references: [id])
+  reporterId    Int
+  location      Location   @relation(fields: [locationId], references: [id])
+  locationId    Int
+  media         Boolean    @default(false)
+  socialMentions Int       @default(0)
+  createdAt     DateTime   @default(now())
+}
+
+model Location {
+  id        Int       @id @default(autoincrement())
+  name      String
+  lat       Float
+  lng       Float
+  reports   Report[]
+}
+
+model SocialData {
+  id        Int       @id @default(autoincrement())
+  platform  String
+  mentions  Int
+  sentiment String
+  keywords  String[]  // array of keywords
+  createdAt DateTime  @default(now())
+}
+
+enum HazardType {
+  TSUNAMI
+  STORM_SURGE
+  HIGH_WAVES
+  COASTAL_FLOODING
+  ABNORMAL_TIDE
+}
+
+enum Severity {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum Status {
+  PENDING
+  VERIFIED
+  INVESTIGATING
+}
+
+enum Role {
+  CITIZEN
+  OFFICIAL
+  ANALYST
+}
