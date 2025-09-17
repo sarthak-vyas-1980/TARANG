@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Calendar, User, MoreVertical } from 'lucide-react';
 import { Card, Button } from '../ui';
 import ReportStatusBadge from './ReportStatusBadge';
-import { formatDate, hazardFormatters, locationFormatters } from '../../utils/formatters';
+import { dateFormatters, hazardFormatters, locationFormatters } from '../../utils/formatters';
 import { getSeverityColor } from '../../utils/helpers';
 import type { Report } from '../../types';
 
@@ -143,7 +143,7 @@ const ReportCard: React.FC<ReportCardProps> = ({
       {/* Date */}
       <div className="flex items-center text-sm text-gray-500">
         <Calendar size={16} className="mr-2 flex-shrink-0" />
-        <span>{formatDate(report.createdAt)}</span>
+        <span>{dateFormatters.short(report.createdAt)}</span>
       </div>
 
       {/* Quick Actions */}

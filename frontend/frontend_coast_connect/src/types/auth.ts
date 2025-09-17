@@ -7,6 +7,7 @@ export interface AuthContextType {
   login: (email: string, password: string) => Promise<ApiResponse>;
   register: (userData: RegisterData) => Promise<ApiResponse>;
   logout: () => void;
+  updateUser: (updatedUser: User) => void; 
 }
 
 export interface AuthResponse {

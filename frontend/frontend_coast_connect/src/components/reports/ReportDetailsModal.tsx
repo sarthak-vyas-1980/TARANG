@@ -2,7 +2,7 @@ import React from 'react';
 import { X, MapPin, Calendar, User, Clock } from 'lucide-react';
 import { Modal, Button } from '../ui';
 import ReportStatusBadge from './ReportStatusBadge';
-import { formatDate, hazardFormatters, locationFormatters } from '../../utils/formatters';
+import { dateFormatters, hazardFormatters, locationFormatters } from '../../utils/formatters';
 import { getSeverityColor } from '../../utils/helpers';
 import type { Report } from '../../types';
 
@@ -111,14 +111,14 @@ const ReportDetailsModal: React.FC<ReportDetailsModalProps> = ({
             <div className="flex items-center space-x-3 text-sm">
               <Calendar size={16} className="text-gray-500" />
               <span className="text-gray-600">Created:</span>
-              <span className="font-medium">{formatDate(report.createdAt)}</span>
+              <span className="font-medium">{dateFormatters.short(report.createdAt)}</span>
             </div>
             
             {report.updatedAt !== report.createdAt && (
               <div className="flex items-center space-x-3 text-sm">
                 <Clock size={16} className="text-gray-500" />
                 <span className="text-gray-600">Last updated:</span>
-                <span className="font-medium">{formatDate(report.updatedAt)}</span>
+                <span className="font-medium">{dateFormatters.short(report.updatedAt)}</span>
               </div>
             )}
           </div>

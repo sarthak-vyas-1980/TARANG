@@ -5,7 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Card } from '../../components/ui';
 import { APP_NAME } from '../../utils/constants';
 
-const SignupPage: React.FC = () => {
+const Signup: React.FC = () => {
   const navigate = useNavigate();
   const { user, loading } = useAuth();
 
@@ -136,4 +136,4 @@ const SignupPage: React.FC = () => {
   );
 };
 
-export default SignupPage;
+export default Signup;

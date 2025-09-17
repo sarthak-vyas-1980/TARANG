@@ -64,6 +64,8 @@ export interface ReportFilters {
   locationId?: number;
   dateFrom?: string;
   dateTo?: string;
+  page?: number;
+  limit?: number;
 }
 
 export interface CreateLocationRequest {

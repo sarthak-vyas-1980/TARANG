@@ -5,7 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { Card } from '../../components/ui';
 import { APP_NAME } from '../../utils/constants';
 
-const LoginPage: React.FC = () => {
+const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user, loading } = useAuth();
@@ -134,4 +134,4 @@ const LoginPage: React.FC = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

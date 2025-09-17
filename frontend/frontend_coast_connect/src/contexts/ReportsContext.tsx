@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import type { ReactNode } from 'react';
 import { ReportsService, NotificationService } from '../services';
 import type { 
   Report, 
@@ -8,7 +9,7 @@ import type {
   ApiResponse 
 } from '../types';
 
-interface ReportsContextType {
+export interface ReportsContextType {
   reports: Report[];
   loading: boolean;
   error: string | null;
@@ -33,7 +34,7 @@ interface ReportsContextType {
   refreshReports: () => Promise<void>;
 }
 
-const ReportsContext = createContext<ReportsContextType | undefined>(undefined);
+export const ReportsContext = createContext<ReportsContextType | undefined>(undefined);
 
 interface ReportsProviderProps {
   children: ReactNode;

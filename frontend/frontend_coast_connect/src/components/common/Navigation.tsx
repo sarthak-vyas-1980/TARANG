@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import type { NavLinkProps, NavLinkRenderProps } from 'react-router-dom';
 import { Home, FileText, Plus, BarChart3, MapPin } from 'lucide-react';
-import { cn } from '../../utils/helpers';
+import { cn } from '../../utils/helpers'; // Make sure this import exists
 import { useAuth } from '../../contexts/AuthContext';
 
 interface NavItem {
@@ -69,11 +70,11 @@ const Navigation: React.FC = () => {
             <li key={item.to}>
               <NavLink
                 to={item.to}
-                className={({ isActive }) =>
+                className={({ isActive }: NavLinkRenderProps) =>
                   cn(
                     'flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-colors',
                     isActive
-                      ? 'bg-primary-100 text-primary-700 border-primary-200'
+                      ? 'bg-blue-100 text-blue-700 border border-blue-200'
                       : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                   )
                 }

@@ -1,49 +1,22 @@
-// Auth pages
+// src/pages/index.ts
+
+// Authentication Pages
 export { Login, Signup } from './auth';
 
-// Dashboard pages
+// Dashboard Page
 export { Dashboard } from './dashboard';
 
-// Profile pages
+// Profile Page
 export { Profile } from './profile';
 
-// Reports pages
+// Reports Pages
 export { 
-  ReportsPage, 
+  Reports,
   CreateReport, 
   EditReport, 
   ViewReport, 
   MyReports 
 } from './reports';
 
-// Re-export with more descriptive names for convenience
-export { 
-  Login as LoginPage,
-  Signup as SignupPage,
-  Dashboard as DashboardPage,
-  Profile as ProfilePage,
-  ReportsPage as AllReportsPage,
-  CreateReport as CreateReportPage,
-  EditReport as EditReportPage,
-  ViewReport as ViewReportPage,
-  MyReports as MyReportsPage
-} from './auth';
+// Optional: Provide alternative descriptive exports
 
-// Group exports by feature for organized imports
-export const AuthPages = {
-  Login,
-  Signup
-} from './auth';
-
-export const ReportPages = {
-  List: ReportsPage,
-  Create: CreateReport,
-  Edit: EditReport,
-  View: ViewReport,
-  MyReports
-} from './reports';
-
-export const CorePages = {
-  Dashboard,
-  Profile
-} from './dashboard';

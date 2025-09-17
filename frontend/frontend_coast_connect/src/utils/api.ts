@@ -114,7 +114,8 @@ class ApiClient {
       this.removeToken();
     }
   }
-
+  
+   
   // Reports methods
   async createReport(reportData: CreateReportData): Promise<ApiResponse<{ report: Report }>> {
     return this.request<{ report: Report }>(API_ENDPOINTS.REPORTS, {

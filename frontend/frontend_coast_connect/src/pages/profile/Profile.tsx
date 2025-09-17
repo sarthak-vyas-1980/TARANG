@@ -6,7 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { UsersService } from '../../services';
 import { USER_ROLES } from '../../utils/constants';
 import { validateName, validateEmail } from '../../utils/validators';
-import { formatDate } from '../../utils/formatters';
+import { dateFormatters } from '../../utils/formatters';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import type { UpdateUserRequest } from '../../types';
 
@@ -216,7 +216,7 @@ const ProfilePage: React.FC = () => {
                     <span className="text-sm text-gray-600">Member since</span>
                   </div>
                   <span className="text-sm font-medium">
-                    {formatDate(user.createdAt)}
+                    {dateFormatters.short(user.createdAt)}
                   </span>
                 </div>
 

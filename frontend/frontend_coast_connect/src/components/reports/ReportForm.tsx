@@ -1,4 +1,5 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState } from 'react';
+import type{FormEvent} from 'react';
 import { Input, Select, Button, Card } from '../ui';
 import { HAZARD_TYPES, SEVERITY_LEVELS } from '../../utils/constants';
 import { validateRequired, validateDescription, validateLocationName, validateLatitude, validateLongitude } from '../../utils/validators';

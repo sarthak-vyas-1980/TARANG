@@ -1,4 +1,4 @@
-export { default as ReportsPage } from './ReportsPage';
+export {  Reports } from './Reports';
 export { default as CreateReport } from './CreateReport';
 export { default as EditReport } from './EditReport';
 export { default as ViewReport } from './ViewReport';

@@ -6,7 +6,7 @@ import { Button, Alert, Card } from '../../components/ui';
 import { ReportStatusBadge } from '../../components/reports';
 import { useAuth } from '../../contexts/AuthContext';
 import { ReportsService } from '../../services';
-import { formatDate, hazardFormatters, locationFormatters } from '../../utils/formatters';
+import { dateFormatters, hazardFormatters, locationFormatters } from '../../utils/formatters';
 import { getSeverityColor } from '../../utils/helpers';
 import LoadingSpinner from '../../components/common/LoadingSpinner';
 import type { Report } from '../../types';
@@ -258,13 +258,13 @@ const ViewReportPage: React.FC = () => {
               <div className="space-y-3">
                 <div>
                   <span className="text-sm text-gray-600">Created:</span>
-                  <p className="text-sm">{formatDate(report.createdAt)}</p>
+                  <p className="text-sm">{dateFormatters.short(report.createdAt)}</p>
                 </div>
                 
                 {report.updatedAt !== report.createdAt && (
                   <div>
                     <span className="text-sm text-gray-600">Last updated:</span>
-                    <p className="text-sm">{formatDate(report.updatedAt)}</p>
+                    <p className="text-sm">{dateFormatters.short(report.updatedAt)}</p>
                   </div>
                 )}
               </div>

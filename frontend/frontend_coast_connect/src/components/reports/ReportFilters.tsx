@@ -3,13 +3,15 @@ import { Search, Filter, X } from 'lucide-react';
 import { Input, Select, Button } from '../ui';
 import { HAZARD_TYPES, SEVERITY_LEVELS, REPORT_STATUS } from '../../utils/constants';
 import { useDebounce } from '../../hooks';
-import type { ReportFilters as Filters } from '../../types';
+import type { ReportFilters as Filters, HazardType, Severity, Status } from '../../types';
 
-interface ReportFiltersProps {
+export interface ReportFiltersProps {
   filters: Filters;
   onFiltersChange: (filters: Partial<Filters>) => void;
   onClearFilters: () => void;
   loading?: boolean;
+  page?: number;
+  limit?: number;
 }
 
 const ReportFilters: React.FC<ReportFiltersProps> = ({
@@ -69,7 +71,7 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
         {/* Hazard Type Filter */}
         <Select
           value={filters.type || ''}
-          onChange={(e) => onFiltersChange({ type: e.target.value || undefined })}
+          onChange={(e) => onFiltersChange({ type: e.target.value as HazardType })}
           options={HAZARD_TYPES}
           placeholder="All Types"
         />
@@ -77,7 +79,7 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
         {/* Severity Filter */}
         <Select
           value={filters.severity || ''}
-          onChange={(e) => onFiltersChange({ severity: e.target.value || undefined })}
+          onChange={(e) => onFiltersChange({ severity: e.target.value as Severity })}
           options={SEVERITY_LEVELS}
           placeholder="All Severities"
         />
@@ -85,7 +87,7 @@ const ReportFilters: React.FC<ReportFiltersProps> = ({
         {/* Status Filter */}
         <Select
           value={filters.status || ''}
-          onChange={(e) => onFiltersChange({ status: e.target.value || undefined })}
+          onChange={(e) => onFiltersChange({ status: e.target.value as Status })}
           options={REPORT_STATUS}
           placeholder="All Statuses"
         />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '../../utils/helpers';
-
+import type { LucideProps } from 'lucide-react';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'danger' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
@@ -79,9 +79,10 @@ const Button: React.FC<ButtonProps> = ({
       {!isLoading && leftIcon && (
         <span className="mr-2 flex-shrink-0">
           {React.isValidElement(leftIcon) 
-            ? React.cloneElement(leftIcon as React.ReactElement, { size: iconSize[size] })
+            ? React.cloneElement(leftIcon as React.ReactElement<LucideProps>, { size: iconSize[size] })
             : leftIcon
-          }
+         }
+
         </span>
       )}
       
@@ -90,7 +91,7 @@ const Button: React.FC<ButtonProps> = ({
       {!isLoading && rightIcon && (
         <span className="ml-2 flex-shrink-0">
           {React.isValidElement(rightIcon) 
-            ? React.cloneElement(rightIcon as React.ReactElement, { size: iconSize[size] })
+            ? React.cloneElement(rightIcon as React.ReactElement<LucideProps> ,{ size: iconSize[size] })
             : rightIcon
           }
         </span>

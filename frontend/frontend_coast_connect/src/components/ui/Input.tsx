@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../../utils/helpers';
+import type { LucideProps } from 'lucide-react';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -39,7 +40,7 @@ const Input: React.FC<InputProps> = ({
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <div className="text-gray-400">
               {React.isValidElement(leftIcon) 
-                ? React.cloneElement(leftIcon as React.ReactElement, { size: 20 })
+                ? React.cloneElement(leftIcon as React.ReactElement<LucideProps>, { size: 20 })
                 : leftIcon
               }
             </div>
@@ -64,7 +65,7 @@ const Input: React.FC<InputProps> = ({
           <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
             <div className="text-gray-400">
               {React.isValidElement(rightIcon) 
-                ? React.cloneElement(rightIcon as React.ReactElement, { size: 20 })
+                ? React.cloneElement(rightIcon as React.ReactElement <LucideProps>, { size: 20 })
                 : rightIcon
               }
             </div>

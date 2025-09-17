@@ -8,7 +8,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useReports } from '../../contexts/ReportsContext';
 import type { Report, ReportFilters as Filters } from '../../types';
 
-const ReportsPage: React.FC = () => {
+export const Reports: React.FC = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { user } = useAuth();
@@ -132,4 +132,4 @@ const ReportsPage: React.FC = () => {
   );
 };
 
-export default ReportsPage;
+

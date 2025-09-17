@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Plus, AlertTriangle, CheckCircle, Clock, BarChart3, MapPin, TrendingUp } from 'lucide-react';
 import { Layout, PageHeader } from '../../components/common';
 import { Card, Button, Badge } from '../../components/ui';
-import { ReportCard, ReportList } from '../../components/reports';
+import { ReportCard, ReportList, ReportFilters } from '../../components/reports';
 import { useAuth } from '../../contexts/AuthContext';
 import { useReports } from '../../contexts/ReportsContext';
 import { ReportsService } from '../../services';
