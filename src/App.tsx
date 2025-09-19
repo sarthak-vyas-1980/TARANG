@@ -1,27 +1,27 @@
 // src/App.tsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import './globals.css'
+// Contexts
 import { AuthProvider } from './contexts/AuthContext';
 import { ReportsProvider } from './contexts/ReportsContext';
 import { SocialProvider } from './contexts/SocialContext';
-import { ProtectedRoute, PublicRoute, OfficialRoute, Header } from './components/common';
-import {
-  Login,
-  Signup,
-  Dashboard,
-  Reports,
-  CreateReport,
-  MapView,
-  SocialDashboard
-} from './pages';
 
-// Import the new official-only pages
+// Common components
+import { Header, ProtectedRoute, PublicRoute, OfficialRoute } from './components/common';
+
+// Pages
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Dashboard from './pages/Dashboard';
+import Reports from './pages/Reports';
+import CreateReport from './pages/CreateReport';
+import MapView from './pages/MapView';
+import SocialDashboard from './pages/SocialDashboard';
 import AdminDashboard from './pages/AdminDashboard';
-import VerifyReports from './pages/VerifyReports';
+import VerifyReports from './components/reports/ReportVerification'; // If you also have a page wrapper, swap the import
 
 const App: React.FC = () => {
-  console.log('App component rendering');
-  
   return (
     <AuthProvider>
       <ReportsProvider>
@@ -29,63 +29,91 @@ const App: React.FC = () => {
           <Router>
             <div className="min-h-screen bg-gray-50">
               <Header />
-              <main>
+
+              <main className="container mx-auto px-4 py-6">
                 <Routes>
-                  {/* Public Routes */}
-                  <Route path="/login" element={
-                    <PublicRoute>
-                      <Login />
-                    </PublicRoute>
-                  } />
-                  <Route path="/signup" element={
-                    <PublicRoute>
-                      <Signup />
-                    </PublicRoute>
-                  } />
+                  {/* Public routes */}
+                  <Route
+                    path="/login"
+                    element={
+                      <PublicRoute>
+                        <Login />
+                      </PublicRoute>
+                    }
+                  />
+                  <Route
+                    path="/signup"
+                    element={
+                      <PublicRoute>
+                        <Signup />
+                      </PublicRoute>
+                    }
+                  />
 
                   {/* Default redirect */}
                   <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-                  {/* Protected Routes */}
-                  <Route path="/dashboard" element={
-                    <ProtectedRoute>
-                      <Dashboard />
-                    </ProtectedRoute>
-                  } />
-                  <Route path="/reports" element={
-                    <ProtectedRoute>
-                      <Reports />
-                    </ProtectedRoute>
-                  } />
-                  <Route path="/create-report" element={
-                    <ProtectedRoute>
-                      <CreateReport />
-                    </ProtectedRoute>
-                  } />
-                  <Route path="/map" element={
-                    <ProtectedRoute>
-                      <MapView />
-                    </ProtectedRoute>
-                  } />
-                  <Route path="/social-dashboard" element={
-                    <ProtectedRoute>
-                      <SocialDashboard />
-                    </ProtectedRoute>
-                  } />
+                  {/* Protected (all authenticated users) */}
+                  <Route
+                    path="/dashboard"
+                    element={
+                      <ProtectedRoute>
+                        <Dashboard />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/reports"
+                    element={
+                      <ProtectedRoute>
+                        <Reports />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/create-report"
+                    element={
+                      <ProtectedRoute>
+                        <CreateReport />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/map"
+                    element={
+                      <ProtectedRoute>
+                        <MapView />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/social-dashboard"
+                    element={
+                      <ProtectedRoute>
+                        <SocialDashboard />
+                      </ProtectedRoute>
+                    }
+                  />
 
-                  {/* Official-Only Routes */}
-                  <Route path="/admin/dashboard" element={
-                    <OfficialRoute>
-                      <AdminDashboard />
-                    </OfficialRoute>
-                  } />
-                  <Route path="/admin/verify-reports" element={
-                    <OfficialRoute>
-                      <VerifyReports />
-                    </OfficialRoute>
-                  } />
+                  {/* Official-only */}
+                  <Route
+                    path="/admin/dashboard"
+                    element={
+                      <OfficialRoute>
+                        <AdminDashboard />
+                      </OfficialRoute>
+                    }
+                  />
+                  <Route
+                    path="/admin/verify-reports"
+                    element={
+                      <OfficialRoute>
+                        <VerifyReports />
+                      </OfficialRoute>
+                    }
+                  />
 
-                  {/* Catch all */}
+                  {/* Fallback */}
                   <Route path="*" element={<Navigate to="/dashboard" replace />} />
                 </Routes>
               </main>

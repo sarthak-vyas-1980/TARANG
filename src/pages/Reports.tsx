@@ -3,7 +3,7 @@ import React from 'react';
 import useAuth from '../hooks/useAuth';
 import { ReportList, ReportVerification } from '../components/reports';
 
-export const Reports: React.FC = () => {
+const Reports: React.FC = () => {
   const { isOfficial } = useAuth();
 
   return (
@@ -29,3 +29,4 @@ export const Reports: React.FC = () => {
   );
 };
 
+export default Reports;

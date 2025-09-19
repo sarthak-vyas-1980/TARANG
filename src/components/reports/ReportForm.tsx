@@ -1,11 +1,10 @@
-// src/components/reports/ReportForm.tsx
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { type CreateReportData, type  HazardReport } from '../../types';
+import type { CreateReportData, HazardReport } from '../../types';
 import { useReportsContext } from '../../contexts/ReportsContext';
 import { MapPin, Upload, Send } from 'lucide-react';
-import * as z from 'zod';
+import { z } from 'zod';
 
 const reportSchema = z.object({
   title: z.string().min(5, 'Title must be at least 5 characters'),
@@ -21,32 +20,40 @@ const reportSchema = z.object({
 
 type ReportFormData = z.infer<typeof reportSchema>;
 
+const hazardTypes = [
+  { value: 'tsunami', label: 'Tsunami' },
+  { value: 'storm_surge', label: 'Storm Surge' },
+  { value: 'high_waves', label: 'High Waves' },
+  { value: 'coastal_flooding', label: 'Coastal Flooding' },
+  { value: 'abnormal_tide', label: 'Abnormal Tide' },
+];
+
+const severityLevels = [
+  { value: 'low', label: 'Low', color: 'bg-green-100 text-green-800' },
+  { value: 'medium', label: 'Medium', color: 'bg-yellow-100 text-yellow-800' },
+  { value: 'high', label: 'High', color: 'bg-orange-100 text-orange-800' },
+  { value: 'critical', label: 'Critical', color: 'bg-red-100 text-red-800' },
+];
+
 const ReportForm: React.FC = () => {
   const { createReport } = useReportsContext();
   const [images, setImages] = useState<File[]>([]);
   const [isGettingLocation, setIsGettingLocation] = useState(false);
 
-  const { register, handleSubmit, setValue, watch, formState: { errors, isSubmitting } } = useForm<ReportFormData>({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<ReportFormData>({
     resolver: zodResolver(reportSchema),
     defaultValues: {
-      location: { lat: 0, lng: 0, address: '' }
-    }
+      location: { lat: 0, lng: 0, address: '' },
+      hazardType: 'high_waves',
+      severity: 'medium',
+    },
   });
-
-  const hazardTypes = [
-    { value: 'tsunami', label: 'Tsunami' },
-    { value: 'storm_surge', label: 'Storm Surge' },
-    { value: 'high_waves', label: 'High Waves' },
-    { value: 'coastal_flooding', label: 'Coastal Flooding' },
-    { value: 'abnormal_tide', label: 'Abnormal Tide' },
-  ];
-
-  const severityLevels = [
-    { value: 'low', label: 'Low', color: 'bg-green-100 text-green-800' },
-    { value: 'medium', label: 'Medium', color: 'bg-yellow-100 text-yellow-800' },
-    { value: 'high', label: 'High', color: 'bg-orange-100 text-orange-800' },
-    { value: 'critical', label: 'Critical', color: 'bg-red-100 text-red-800' },
-  ];
 
   const getCurrentLocation = () => {
     setIsGettingLocation(true);
@@ -76,23 +83,24 @@ const ReportForm: React.FC = () => {
       await createReport({
         ...data,
         images,
-      } as CreateReportData);
+      } as unknown as CreateReportData);
       alert('Report submitted successfully!');
     } catch (error: any) {
-      alert(error.message || 'Failed to submit report');
+      alert(error?.message || 'Failed to submit report');
     }
   };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
-    setImages(prev => [...prev, ...files]);
+    setImages((prev) => [...prev, ...files]);
   };
 
   return (
     <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
       <h2 className="text-2xl font-bold mb-6">Report Ocean Hazard</h2>
-      
+
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        {/* Title */}
         <div>
           <label className="block text-sm font-medium mb-2">Report Title</label>
           <input
@@ -103,6 +111,7 @@ const ReportForm: React.FC = () => {
           {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>}
         </div>
 
+        {/* Hazard Type */}
         <div>
           <label className="block text-sm font-medium mb-2">Hazard Type</label>
           <select
@@ -111,32 +120,33 @@ const ReportForm: React.FC = () => {
           >
             <option value="">Select hazard type</option>
             {hazardTypes.map(({ value, label }) => (
-              <option key={value} value={value}>{label}</option>
+              <option key={value} value={value}>
+                {label}
+              </option>
             ))}
           </select>
-          {errors.hazardType && <p className="text-red-500 text-sm mt-1">{errors.hazardType.message}</p>}
+          {errors.hazardType && (
+            <p className="text-red-500 text-sm mt-1">{errors.hazardType.message}</p>
+          )}
         </div>
 
+        {/* Severity */}
         <div>
           <label className="block text-sm font-medium mb-2">Severity Level</label>
           <div className="grid grid-cols-2 gap-3">
             {severityLevels.map(({ value, label, color }) => (
               <label key={value} className="flex items-center space-x-2 cursor-pointer">
-                <input
-                  type="radio"
-                  {...register('severity')}
-                  value={value}
-                  className="text-blue-600"
-                />
-                <span className={`px-3 py-1 rounded-full text-sm font-medium ${color}`}>
-                  {label}
-                </span>
+                <input type="radio" {...register('severity')} value={value} className="text-blue-600" />
+                <span className={`px-3 py-1 rounded-full text-sm font-medium ${color}`}>{label}</span>
               </label>
             ))}
           </div>
-          {errors.severity && <p className="text-red-500 text-sm mt-1">{errors.severity.message}</p>}
+          {errors.severity && (
+            <p className="text-red-500 text-sm mt-1">{errors.severity.message}</p>
+          )}
         </div>
 
+        {/* Location */}
         <div>
           <label className="block text-sm font-medium mb-2">Location</label>
           <div className="space-y-2">
@@ -161,11 +171,13 @@ const ReportForm: React.FC = () => {
                 {...register('location.lat', { valueAsNumber: true })}
                 placeholder="Latitude"
                 className="border rounded px-3 py-2 text-sm"
+                inputMode="decimal"
               />
               <input
                 {...register('location.lng', { valueAsNumber: true })}
                 placeholder="Longitude"
                 className="border rounded px-3 py-2 text-sm"
+                inputMode="decimal"
               />
             </div>
           </div>
@@ -176,6 +188,7 @@ const ReportForm: React.FC = () => {
           )}
         </div>
 
+        {/* Description */}
         <div>
           <label className="block text-sm font-medium mb-2">Description</label>
           <textarea
@@ -184,36 +197,28 @@ const ReportForm: React.FC = () => {
             className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500"
             placeholder="Describe what you observed in detail..."
           />
-          {errors.description && <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>}
+          {errors.description && (
+            <p className="text-red-500 text-sm mt-1">{errors.description.message}</p>
+          )}
         </div>
 
+        {/* Media */}
         <div>
           <label className="block text-sm font-medium mb-2">Photos/Videos (Optional)</label>
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
             <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
             <p className="text-gray-600 mb-2">Upload photos or videos</p>
-            <input
-              type="file"
-              multiple
-              accept="image/*,video/*"
-              onChange={handleImageUpload}
-              className="hidden"
-              id="file-upload"
-            />
-            <label
-              htmlFor="file-upload"
-              className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
+            <input id="file-upload" type="file" multiple accept="image/*,video/*" onChange={handleImageUpload} className="hidden" />
+            <label htmlFor="file-upload" className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
               Choose Files
             </label>
-          </div>
-          {images.length > 0 && (
             <div className="mt-2 text-sm text-gray-600">
-              {images.length} file(s) selected
+              {images.length === 0 ? 'No files selected' : `${images.length} files selected`}
             </div>
-          )}
+          </div>
         </div>
 
+        {/* Submit */}
         <button
           type="submit"
           disabled={isSubmitting}
