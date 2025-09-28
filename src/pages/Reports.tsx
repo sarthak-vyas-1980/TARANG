@@ -2,29 +2,32 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
 import { ReportList, ReportVerification } from '../components/reports';
+import Card from '../components/ui/Card';
 
 const Reports: React.FC = () => {
   const { isOfficial } = useAuth();
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow-sm border">
-        <h1 className="text-2xl font-bold text-gray-900">
-          {isOfficial ? 'Report Management' : 'Hazard Reports'}
-        </h1>
-        <p className="text-gray-600 mt-1">
-          {isOfficial 
-            ? 'Review, verify, and manage hazard reports from citizens and field personnel'
-            : 'View all hazard reports and track their verification status'
-          }
-        </p>
-      </div>
+    <div className="min-h-screen py-8 px-2">
+      <div className="max-w-5xl mx-auto space-y-6">
+        <Card padding="lg" shadow="sm">
+          <h1 className="text-2xl font-bold text-primary">
+            {isOfficial ? 'Report Management' : 'Hazard Reports'}
+          </h1>
+          <p className="text-gray-700 mt-1">
+            {isOfficial 
+              ? 'Review, verify, and manage hazard reports from citizens and field personnel'
+              : 'View all hazard reports and track their verification status'
+            }
+          </p>
+        </Card>
 
-      {isOfficial ? (
-        <ReportVerification />
-      ) : (
-        <ReportList />
-      )}
+        {isOfficial ? (
+          <ReportVerification />
+        ) : (
+          <ReportList />
+        )}
+      </div>
     </div>
   );
 };

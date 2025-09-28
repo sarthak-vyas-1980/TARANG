@@ -1,4 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;700&display=swap');
 
+
+body {
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  color: #111827;
+  background: #fff;
+  position: relative;
+}
+
+/* Subtle texture overlay for all pages except About, Login, Signup */
+body {
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  color: #111827;
+  background: #fff;
+  position: relative;
+}
+
+/* Subtle texture overlay for all pages except About, Login, Signup */
+.bg-texture {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url('/src/assets/otherbg1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
 @tailwind base;
 @tailwind components;
@@ -8,9 +38,16 @@
 html, body, #root {
   height: 100%;
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: theme('colors.gray.50');
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  background: #fff;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+
 
 .container {
   max-width: 1200px;

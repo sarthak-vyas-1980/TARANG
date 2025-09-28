@@ -9,8 +9,8 @@ interface SocialMentionsWidgetProps {
 }
 
 const SocialMentionsWidget: React.FC<SocialMentionsWidgetProps> = ({ report, showDetails = false }) => {
-  // Mock social mentions data - this would come from your NLP API
-  const socialMentions = {
+  // Use real social mentions if available, else fallback to mock
+  const socialMentions = report.socialMentions || {
     total: Math.floor(Math.random() * 100) + 10,
     recent: Math.floor(Math.random() * 20) + 5,
     platforms: {
@@ -88,7 +88,7 @@ const SocialMentionsWidget: React.FC<SocialMentionsWidgetProps> = ({ report, sho
 
   // Detailed view
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 space-y-4">
+  <div className="bg-white p-4 space-y-4 rounded-2xl shadow">
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold flex items-center">
           <MessageSquare className="w-5 h-5 mr-2 text-blue-500" />
@@ -105,11 +105,11 @@ const SocialMentionsWidget: React.FC<SocialMentionsWidgetProps> = ({ report, sho
 
       {/* Overall Stats */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="bg-blue-50 p-3 rounded-lg">
+  <div className="bg-blue-100 p-3 rounded-2xl shadow">
           <div className="text-2xl font-bold text-blue-600">{socialMentions.total}</div>
           <div className="text-sm text-blue-600">Total Mentions</div>
         </div>
-        <div className="bg-green-50 p-3 rounded-lg">
+  <div className="bg-green-100 p-3 rounded-2xl shadow">
           <div className="text-2xl font-bold text-green-600">{socialMentions.recent}</div>
           <div className="text-sm text-green-600">Last 24 Hours</div>
         </div>
@@ -189,7 +189,7 @@ const SocialMentionsWidget: React.FC<SocialMentionsWidgetProps> = ({ report, sho
 
       {/* Influencer Mentions */}
       {socialMentions.influencerMentions > 0 && (
-        <div className="flex items-center justify-between bg-purple-50 p-3 rounded-lg">
+  <div className="bg-purple-100 flex items-center justify-between p-3 rounded-2xl shadow">
           <div className="flex items-center space-x-2">
             <Users className="w-5 h-5 text-purple-600" />
             <span className="text-sm font-medium text-purple-700">Influencer Mentions</span>
@@ -199,7 +199,7 @@ const SocialMentionsWidget: React.FC<SocialMentionsWidgetProps> = ({ report, sho
       )}
 
       {/* View Details Button */}
-      <button className="w-full bg-blue-50 hover:bg-blue-100 text-blue-600 py-2 px-4 rounded-lg text-sm font-medium transition-colors flex items-center justify-center">
+  <button className="w-full bg-blue-100 hover:bg-blue-200 text-blue-600 py-2 px-4 text-sm font-medium transition-colors flex items-center justify-center rounded-2xl shadow">
         <ExternalLink className="w-4 h-4 mr-2" />
         View Social Media Feed
       </button>

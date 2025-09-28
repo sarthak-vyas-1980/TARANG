@@ -10,6 +10,7 @@ export interface User {
   organization?: string;
   profilePicture?: string;
   lastLoginAt?: string;
+  password?: string; // For localStorage-only login
 }
 
 export type UserRole = 'user' | 'official';

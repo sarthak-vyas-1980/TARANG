@@ -74,7 +74,7 @@ const ReportVerification: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border">
+  <div className="bg-white p-6 rounded-2xl shadow">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Report Verification Center</h1>
@@ -108,7 +108,7 @@ const ReportVerification: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* List */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-lg shadow-sm border">
+          <div className="bg-white rounded-2xl shadow">
             <div className="p-6 border-b border-gray-200">
               <h2 className="text-lg font-semibold text-gray-800">Reports ({filteredReports.length})</h2>
             </div>
@@ -160,7 +160,7 @@ const ReportVerification: React.FC = () => {
 
         {/* Panel */}
         <div>
-          <div className="bg-white rounded-lg shadow-sm border sticky top-4">
+          <div className="bg-white sticky top-4 rounded-2xl shadow">
             <div className="p-6 border-b border-gray-200">
               <h3 className="text-lg font-semibold text-gray-800">
                 {selectedReport ? 'Verification Details' : 'Select Report'}

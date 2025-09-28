@@ -1,9 +1,10 @@
 // src/components/reports/ReportCard.tsx
 import React from 'react';
-import { Clock, MapPin, User, AlertTriangle, CheckCircle, XCircle, Eye } from 'lucide-react';
+import { MapPin, User, AlertTriangle, CheckCircle, XCircle } from 'lucide-react';
 import type { HazardReport } from '../../types';
 import { useAuthContext } from '../../contexts/AuthContext';
 import SocialMentionsWidget from './SocialMentionsWidget';
+import ReportStatusBadge from './ReportStatusBadge';
 
 interface ReportCardProps {
   report: HazardReport;
@@ -15,22 +16,15 @@ const ReportCard: React.FC<ReportCardProps> = ({ report, showActions = false, on
   const { user } = useAuthContext();
   const isOfficial = user?.role === 'official';
 
-  const getStatusIcon = () => {
-    switch (report.status) {
-      case 'verified': return <CheckCircle className="w-4 h-4 text-green-600" />;
-      case 'rejected': return <XCircle className="w-4 h-4 text-red-600" />;
-      case 'investigating': return <Eye className="w-4 h-4 text-blue-600" />;
-      default: return <Clock className="w-4 h-4 text-yellow-600" />;
-    }
-  };
+  // Status icon now handled by ReportStatusBadge
 
   const getSeverityColor = () => {
     switch (report.severity) {
-      case 'critical': return 'border-l-red-600 bg-red-50';
-      case 'high': return 'border-l-orange-500 bg-orange-50';
-      case 'medium': return 'border-l-yellow-500 bg-yellow-50';
-      case 'low': return 'border-l-green-500 bg-green-50';
-      default: return 'border-l-gray-500 bg-gray-50';
+      case 'critical': return 'border-l-red-600';
+      case 'high': return 'border-l-orange-500';
+      case 'medium': return 'border-l-yellow-500';
+      case 'low': return 'border-l-green-500';
+      default: return 'border-l-gray-500';
     }
   };
 
@@ -49,15 +43,17 @@ const ReportCard: React.FC<ReportCardProps> = ({ report, showActions = false, on
   };
 
   return (
-    <div className={`border-l-4 rounded-lg p-4 bg-white shadow-sm hover:shadow-md transition-shadow ${getSeverityColor()}`}>
+    <div
+      className={`border-l-4 p-6 mb-4 bg-white rounded-2xl shadow-xl border-blue-100/40 transition-all duration-300 animate-fadein ${getSeverityColor()}`}
+      style={{ backgroundColor: '#fff' }}
+    >
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center space-x-2">
-          {getStatusIcon()}
-          <span className="font-semibold text-gray-900">{report.title}</span>
+          <ReportStatusBadge status={report.status} />
+          <span className="font-semibold text-gray-900 text-lg">{report.title}</span>
         </div>
-        
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-          report.severity === 'critical' ? 'bg-red-100 text-red-800' :
+        <span className={`px-2 py-1 rounded-full text-xs font-semibold tracking-wide shadow-sm border ${
+          report.severity === 'critical' ? 'bg-red-100 text-red-800 border-red-200' :
           report.severity === 'high' ? 'bg-orange-100 text-orange-800' :
           report.severity === 'medium' ? 'bg-yellow-100 text-yellow-800' :
           'bg-green-100 text-green-800'
@@ -88,7 +84,7 @@ const ReportCard: React.FC<ReportCardProps> = ({ report, showActions = false, on
 
         <div className="flex items-center justify-between text-xs text-gray-500">
           <span>{getTimeAgo(report.createdAt)}</span>
-          <span className="capitalize">{report.status}</span>
+          <ReportStatusBadge status={report.status} />
         </div>
 
         {/* Social Media Mentions */}

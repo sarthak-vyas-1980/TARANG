@@ -1,3 +1,12 @@
+/**
+ * Utility to join class names conditionally (like clsx or classnames)
+ */
+export function cn(...args: any[]): string {
+  return args
+    .flat(Infinity)
+    .filter(Boolean)
+    .join(' ');
+}
 // src/utils/helpers.ts
 import { 
   HAZARD_TYPE_LABELS, 

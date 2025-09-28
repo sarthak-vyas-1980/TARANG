@@ -34,11 +34,11 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <div className={cn(
-      'bg-white rounded-lg',
+      'bg-white rounded-md',
       paddingClasses[padding],
       shadowClasses[shadow],
       border && 'border border-gray-200',
-      hover && 'transition-shadow duration-200 hover:shadow-lg',
+      hover && 'transition-shadow duration-200 hover:shadow-md',
       className
     )}>
       {children}

@@ -96,7 +96,7 @@ const ReportForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow">
+  <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow">
       <h2 className="text-2xl font-bold mb-6">Report Ocean Hazard</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

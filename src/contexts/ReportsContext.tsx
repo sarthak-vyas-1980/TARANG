@@ -65,7 +65,7 @@ export const ReportsProvider: React.FC<ReportsProviderProps> = ({ children }) =>
         socialMentions: {
           total: 156,
           recent: 45,
-          platforms: { twitter: 78, facebook: 34, instagram: 23, youtube: 12, tiktok: 9 },
+          platforms: { twitter: 7, facebook: 3, instagram: 2, youtube: 1, tiktok: 9 },
           sentiment: { positive: 5, negative: 67, neutral: 23, concern: 89, panic: 34 },
           trending: true,
           peakTime: new Date(Date.now() - 15 * 60 * 1000).toISOString(),
@@ -101,7 +101,7 @@ export const ReportsProvider: React.FC<ReportsProviderProps> = ({ children }) =>
         socialMentions: {
           total: 89,
           recent: 23,
-          platforms: { twitter: 45, facebook: 28, instagram: 12, youtube: 3, tiktok: 1 },
+          platforms: { twitter: 4, facebook: 2, instagram: 1, youtube: 3, tiktok: 1 },
           sentiment: { positive: 8, negative: 34, neutral: 25, concern: 22, panic: 0 },
           trending: false,
           keywords: ['storm', 'goa', 'flooding', 'rescue'],
@@ -194,8 +194,8 @@ export const ReportsProvider: React.FC<ReportsProviderProps> = ({ children }) =>
         socialMentions: {
           total: 0,
           recent: 0,
-          platforms: { twitter: 0, facebook: 0, instagram: 0, youtube: 0, tiktok: 0 },
-          sentiment: { positive: 0, negative: 0, neutral: 0, concern: 0, panic: 0 },
+          platforms: { twitter: 2, facebook: 4, instagram: 3, youtube: 1, tiktok: 0 },
+          sentiment: { positive: 5, negative: 55, neutral: 0, concern: 77, panic: 0 },
           trending: false,
           keywords: [],
           influencerMentions: 0,
