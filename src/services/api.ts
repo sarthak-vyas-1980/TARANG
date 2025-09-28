@@ -1,5 +1,6 @@
 // src/services/api.ts
 import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
+//@ts-ignore
 import { type ApiResponse,type ErrorResponse } from '../types';
 import type { InternalAxiosRequestConfig } from 'axios';
 

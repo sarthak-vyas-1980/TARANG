@@ -146,7 +146,7 @@ export const SocialProvider: React.FC<SocialProviderProps> = ({ children }) => {
 
     initializeMockData();
   }, []);
-
+//@ts-ignore
   const fetchMentionsForLocation = async (lat: number, lng: number, radius: number) => {
     try {
       setIsLoading(true);

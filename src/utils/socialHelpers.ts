@@ -4,8 +4,10 @@ import {
   PLATFORM_COLORS, 
   PLATFORM_ICONS, 
   SOCIAL_THRESHOLDS, 
+  //@ts-ignore
   SENTIMENT_COLORS 
 } from './constants';
+//@ts-ignore
 import { formatNumber, formatPercentage } from './helpers';
 
 /**

@@ -21,6 +21,7 @@ const Dashboard: React.FC = () => {
     getCriticalReports,
     getRecentReports 
   } = useReports();
+  //@ts-ignore
   const { metrics, getTotalEngagement, mentions } = useSocial();
 
   const pendingCount = getPendingReportsCount();

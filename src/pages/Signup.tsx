@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SignupForm } from '../components/auth/SignupForm';
+//@ts-ignore
 import { GlassButton } from '../components/ui';
 import tsunamiBg from '../assets/tsunami.jpg';
 

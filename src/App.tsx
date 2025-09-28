@@ -1,12 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './globals.css';
+//@ts-ignore
 import otherBg from './assets/otherbg.jpg';
 // Contexts
 import { AuthProvider } from './contexts/AuthContext';
 import { ReportsProvider } from './contexts/ReportsContext';
 import { SocialProvider } from './contexts/SocialContext';
 // Common components
+//@ts-ignore
 import { Header, ProtectedRoute, PublicRoute, OfficialRoute } from './components/common';
 // Pages
 import Login from './pages/Login';

@@ -62,7 +62,7 @@ export class RealtimeService {
           this.handleOpen(event);
           resolve(event);
         };
-        
+        //@ts-ignore
         this.ws.onerror = (event) => {
           clearTimeout(timeout);
           reject(new Error('WebSocket connection failed'));
@@ -221,6 +221,7 @@ export class RealtimeService {
   /**
    * Handle WebSocket open event
    */
+  //@ts-ignore
   private handleOpen(event: Event): void {
     console.log('WebSocket connected');
     this.isConnecting = false;

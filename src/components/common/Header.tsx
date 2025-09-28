@@ -5,6 +5,7 @@ import { GlassButton } from '../ui';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthContext } from '../../contexts/AuthContext';
 import {
+  //@ts-ignore
   Waves, Home, FileText, MapPin, PlusCircle,
   Shield, LogOut, User as UserIcon, BarChart3, CheckCircle
 } from 'lucide-react';

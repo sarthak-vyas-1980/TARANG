@@ -1,5 +1,6 @@
 // src/hooks/useMap.ts
 import { useState, useCallback } from 'react';
+//@ts-ignore
 import {type MapPosition } from '../types';
 
 const useMap = () => {

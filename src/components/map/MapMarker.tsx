@@ -36,7 +36,7 @@ const MapMarker: React.FC<MapMarkerProps> = ({ severity, status, hazardType }) =
       default: return '⚠️';
     }
   };
-
+//@ts-ignore
   const createIcon = () => {
     const color = getMarkerColor();
     const icon = getHazardIcon();

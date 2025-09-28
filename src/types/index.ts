@@ -154,3 +154,10 @@ export interface EnvConfig {
   SENTRY_DSN?: string;
   ANALYTICS_ID?: string;
 }
+export interface SelectOption {
+  value: string | number;
+  label: string;
+  // Optional: add more fields if needed
+  disabled?: boolean;
+  [key: string]: any;
+}

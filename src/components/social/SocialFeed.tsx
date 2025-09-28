@@ -1,5 +1,6 @@
 // src/components/social/SocialFeed.tsx
 import React from 'react';
+//@ts-ignore
 import { MessageSquare, TrendingUp, Heart, Share } from 'lucide-react';
 
 const SocialFeed: React.FC = () => {

@@ -4,7 +4,7 @@ import useAuth from '../hooks/useAuth';
 import { ReportList, ReportVerification } from '../components/reports';
 import Card from '../components/ui/Card';
 
-const Reports: React.FC = () => {
+export const Reports: React.FC = () => {
   const { isOfficial } = useAuth();
 
   return (
