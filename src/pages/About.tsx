@@ -26,7 +26,7 @@ const About: React.FC = () => {
           <div className="flex justify-center mb-4">
             <Waves className="w-16 h-16 text-blue-200 drop-shadow-lg" />
           </div>
-          <h1 className="text-4xl font-bold text-white mb-4 drop-shadow-lg">Coast-Connect</h1>
+          <h1 className="text-4xl font-bold text-white mb-4 drop-shadow-lg">TARANG</h1>
           <p className="text-xl text-blue-100 mb-6 drop-shadow">
             Empowering Coastal Communities Through Real-Time Ocean Hazard Reporting
           </p>
@@ -43,16 +43,16 @@ const About: React.FC = () => {
 
   {/* About Section */}
   <div className="glass-card p-8 mb-8">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">About Coast-Connect</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">About TARANG</h2>
         <p className="text-gray-700 mb-4">
-          Coast-Connect is a cutting-edge platform designed to enhance coastal safety through 
+          TARANG is a cutting-edge platform designed to enhance coastal safety through 
           community-driven ocean hazard reporting and official verification. Our system bridges 
           the gap between citizens, coastal authorities, and emergency responders, enabling 
           faster response times and better disaster preparedness.
         </p>
         <p className="text-gray-700 mb-6">
           By combining real-time citizen reports with social media analysis and official 
-          verification workflows, Coast-Connect provides comprehensive situational awareness 
+          verification workflows, TARANG provides comprehensive situational awareness 
           for tsunamis, storm surges, high waves, coastal flooding, and other marine threats.
         </p>
       </div>
@@ -141,7 +141,7 @@ const About: React.FC = () => {
 
       {/* Call to Action */}
   <div className="glass-card bg-gradient-to-br from-blue-700 via-cyan-500 to-green-400 rounded-lg p-8 text-center border-0 shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4 text-navy drop-shadow-lg">Join Coast-Connect Today</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-navy drop-shadow-lg">Join TARANG Today</h2>
         <p className="mb-6 text-navy drop-shadow">
           Be part of the solution. Help make coastal communities safer and more resilient.
         </p>
