@@ -49,7 +49,7 @@ const About: React.FC = () => {
           community-driven ocean hazard reporting and official verification. Our system bridges 
           the gap between citizens, coastal authorities, and emergency responders, enabling 
           faster response times and better disaster preparedness. */}
-          TARANG (Technology for Alerts on Rising Aquatic Natural Geohazards) is a robust, cutting-edge digital platform specifically designed to fundamentally enhance coastal safety and resilience. We achieve this through a unique, community-driven framework that integrates real-time ocean hazard reporting with official verification protocols. Our system effectively bridges the operational gap between citizens, maritime regulatory authorities, and critical emergency responders, leading to substantially faster incident response times and dramatically improved disaster preparedness strategies.
+          <b>TARANG (Technology for Alerts on Rising Aquatic Natural Geohazards)</b> is a robust, cutting-edge digital platform specifically designed to fundamentally enhance coastal safety and resilience. We achieve this through a unique, community-driven framework that integrates real-time ocean hazard reporting with official verification protocols. Our system effectively bridges the operational gap between citizens, maritime regulatory authorities, and critical emergency responders, leading to substantially faster incident response times and dramatically improved disaster preparedness strategies.
 
         </p>
         <p className="text-gray-700 mb-6">
