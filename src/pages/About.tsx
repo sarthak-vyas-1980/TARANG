@@ -45,15 +45,19 @@ const About: React.FC = () => {
   <div className="glass-card p-8 mb-8">
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">About TARANG</h2>
         <p className="text-gray-700 mb-4">
-          TARANG is a cutting-edge platform designed to enhance coastal safety through 
+          {/* TARANG which stands for Technology for Alerts on Rising Aquatic Natural Geohazards is a cutting-edge platform designed to enhance coastal safety through 
           community-driven ocean hazard reporting and official verification. Our system bridges 
           the gap between citizens, coastal authorities, and emergency responders, enabling 
-          faster response times and better disaster preparedness.
+          faster response times and better disaster preparedness. */}
+          TARANG (Technology for Alerts on Rising Aquatic Natural Geohazards) is a robust, cutting-edge digital platform specifically designed to fundamentally enhance coastal safety and resilience. We achieve this through a unique, community-driven framework that integrates real-time ocean hazard reporting with official verification protocols. Our system effectively bridges the operational gap between citizens, maritime regulatory authorities, and critical emergency responders, leading to substantially faster incident response times and dramatically improved disaster preparedness strategies.
+
         </p>
         <p className="text-gray-700 mb-6">
-          By combining real-time citizen reports with social media analysis and official 
+          {/* By combining real-time citizen reports with social media analysis and official 
           verification workflows, TARANG provides comprehensive situational awareness 
-          for tsunamis, storm surges, high waves, coastal flooding, and other marine threats.
+          for tsunamis, storm surges, high waves, coastal flooding, and other marine threats. */}
+
+The platform's core strength lies in its ability to synthesize multiple data streams. By combining verified, crowd-sourced citizen reports with proactive social media analysis and established official verification workflows, TARANG delivers comprehensive, actionable situational awareness. This critical intelligence covers a full spectrum of hydro-marine threats, including tsunami inundation risks, severe storm surges, hazardous high wave events, extensive coastal flooding, and other impending marine emergencies.
         </p>
       </div>
 
